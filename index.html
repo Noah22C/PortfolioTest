@@ -235,13 +235,11 @@
             width: 250px;
             height: 250px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--bg-dark); /* Dark text on accent */
+            /* NEW: Replaced gradient with the provided profile image */
+            background: url('https://i.imgur.com/YrN4xQa.jpeg') center center/cover no-repeat;
+            display: block; /* No need for flex centering anymore, using background properties */
             margin: 0 auto;
+            /* Retain the glowing border effect */
             box-shadow: 0 0 0 8px var(--bg-dark), 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
@@ -322,6 +320,7 @@
 
         .project-image {
             height: 200px;
+            /* Default fallback gradient */
             background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%);
             display: flex;
             align-items: center;
@@ -330,16 +329,40 @@
             color: var(--bg-dark); /* Dark text on accent */
         }
         
-        /* Custom style for the second project card image (Task Management App) */
-        .project-two-image {
-            /* Use the uploaded image as background with a slight dark overlay */
+        /* --- Project Card Image Styles --- */
+        
+        /* Custom Project Image Background for Project 1 (E-Commerce) */
+        .project-one-bg {
+            /* Image: https://i.imgur.com/PYI3DrT.png */
             background: 
                 linear-gradient(rgba(34, 34, 34, 0.1), rgba(34, 34, 34, 0.2)),
-                url('uploaded:Screenshot 2025-09-30 101530.jpg') center / cover no-repeat;
+                url('https://i.imgur.com/PYI3DrT.png') center / cover no-repeat;
             
-            /* Overwrite the default icon styling/content */
             font-size: 0;
         }
+
+        /* Custom Project Image Background for Project 2 (Task Management App) */
+        .project-two-bg {
+            /* Image: https://i.imgur.com/bdEzWk7.png */
+            background: 
+                linear-gradient(rgba(34, 34, 34, 0.1), rgba(34, 34, 34, 0.2)),
+                url('https://i.imgur.com/bdEzWk7.png') center / cover no-repeat;
+            
+            font-size: 0;
+        }
+
+        /* Custom Project Image Background for Project 3 (Weather Dashboard) */
+        .project-three-bg {
+            /* NEW IMAGE: https://i.imgur.com/i2fLD3m.png */
+            background: 
+                linear-gradient(rgba(34, 34, 34, 0.1), rgba(34, 34, 34, 0.2)),
+                url('https://i.imgur.com/i2fLD3m.png') center / cover no-repeat;
+            
+            font-size: 0;
+        }
+
+        /* --- End Project Card Image Styles --- */
+
 
         .project-content {
             padding: 2rem;
@@ -609,7 +632,8 @@
             <h2 class="section-title fade-in">About Me</h2>
             <div class="about-content fade-in">
                 <div class="about-image">
-                    <div class="profile-img">NC</div>
+                    <!-- Profile image is now a background image in CSS -->
+                    <div class="profile-img"></div>
                 </div>
                 <div class="about-text">
                     <p>
@@ -660,17 +684,18 @@
             <h2 class="section-title fade-in">Featured Projects</h2>
             <div class="projects-grid fade-in">
                 <div class="project-card">
-                    <div class="project-image">🛒</div>
+                    <!-- Project 1 (E-Commerce) -->
+                    <div class="project-image project-one-bg"></div>
                     <div class="project-content">
                         <h3>LifePlanner</h3>
-                        <p>An app that helps to reduce stress by building a routine that best fits you!</p>
+                        <p>An app that helps reduce stress and to build a better daily routine that best fits you!</p>
                         <div class="project-tags">
-                            <span class="tag">Figma</span>
-                            <span class="tag">UI Design</span>
-                            <span class="tag">Web Design</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Stripe</span>
                         </div>
                         <div class="project-links">
-                            <!-- UPDATED LINK: Behance Case Study -->
                             <a href="https://www.behance.net/gallery/234792457/LifePlanner-Case-Study" target="_blank" class="project-link primary-link">Live Demo</a>
                             <a href="#" class="project-link secondary-link">GitHub</a>
                         </div>
@@ -678,19 +703,18 @@
                 </div>
 
                 <div class="project-card">
-                    <!-- Added project-two-image class and removed the emoji for the image -->
-                    <div class="project-image project-two-image"></div>
+                    <!-- Project 2 (Task Management App) -->
+                    <div class="project-image project-two-bg"></div>
                     <div class="project-content">
                         <h3>Stillwater Blues</h3>
-                        <p>Uncover mysteries in this dark mystery game.</p>
+                        <p>Uncover mysteries in this dark mystery puzzle game.</p>
                         <div class="project-tags">
-                            <span class="tag">Unreal Engine 5</span>
-                            <span class="tag">UI Design</span>
-                            <span class="tag">Story Writter</span>
-                            <span class="tag">Level Design</span>
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">PWA</span>
                         </div>
                         <div class="project-links">
-                            <!-- This link was updated in the previous turn, keeping the new URL -->
                             <a href="https://www.behance.net/gallery/234865183/Stillwater-Blues-Case-Study" target="_blank" class="project-link primary-link">Live Demo</a>
                             <a href="#" class="project-link secondary-link">GitHub</a>
                         </div>
@@ -698,15 +722,16 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image">🌤️</div>
+                    <!-- Project 3 (Weather Dashboard) -->
+                    <div class="project-image project-three-bg"></div>
                     <div class="project-content">
                         <h3>Field Stormer</h3>
-                        <p>Play as a sportsfan that runs the field and ruins the game because his favorite team did not make it to the elites.</p>
+                        <p>Play as a crazy person running the field of a sports event after his favorite team failed to be in the elites.</p>
                         <div class="project-tags">
-                            <span class="tag">Unity</span>
-                            <span class="tag">C#</span>
-                            <span class="tag">PixelArt</span>
-                            <span class="tag">Game Design</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Chart.js</span>
+                            <span class="tag">API</span>
+                            <span class="tag">CSS3</span>
                         </div>
                         <div class="project-links">
                             <!-- Live Demo button is now disabled -->
@@ -749,7 +774,7 @@
                         <div class="contact-icon">📍</div>
                         <div>
                             <strong>Location</strong><br>
-                            San Francisco, CA
+                            Karlstad, SV
                         </div>
                     </div>
                 </div>
