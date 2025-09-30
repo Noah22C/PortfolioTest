@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoahCelius - Portfolio</title>
     <title>Noah Celius - Portfolio</title>
     <style>
+        /* BASE COLORS */
+        :root {
+            --bg-dark: #0E0E0E;
+            --bg-card: #222222;
+            --text-light: #A7A7A7;
+            --text-heading: #FFF9CD;
+            --accent-primary: #CE6DE6; /* Purple */
+            --accent-hover: #F0B4FF; /* Light Purple */
+            --accent-secondary: #FFEE70; /* Yellow */
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,7 +25,8 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-light); /* Dark Mode Text */
+            background: var(--bg-dark); /* Dark Mode Background */
             scroll-behavior: smooth;
         }
 
@@ -24,11 +35,11 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--bg-dark); /* Using bg-card with opacity */
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5); /* Darker shadow */
             transition: all 0.3s ease;
         }
 
@@ -42,9 +53,9 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 35px;
             font-weight: bold;
-            color: #2563eb;
+            color: var(--accent-primary);
         }
 
         .nav-links {
@@ -55,14 +66,14 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: var(--text-light);
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
         }
 
         .nav-links a:hover {
-            color: #2563eb;
+            color: var(--accent-primary);
         }
 
         .nav-links a::after {
@@ -72,7 +83,7 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background-color: #2563eb;
+            background-color: var(--accent-primary);
             transition: width 0.3s ease;
         }
 
@@ -83,14 +94,16 @@
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* Using a dark gradient with the primary accent */
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-card) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: white; 
             position: relative;
             overflow: hidden;
+            border-bottom: 5px solid var(--accent-primary);
         }
 
         .hero::before {
@@ -100,7 +113,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="1" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            /* Custom image for hero background */
+            background: url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover; /* Ensures the image covers the entire hero area */
+            background-position: center; /* Centers the background image */
+            filter: grayscale(100%) blur(4px); /* Makes it black and white and adds a blur */
+            opacity: 0.2; /* Dims the image to improve text contrast */
             animation: float 20s ease-in-out infinite;
         }
 
@@ -120,6 +138,7 @@
             font-size: 3.5rem;
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease-out;
+            color: var(--text-heading);
         }
 
         .hero .subtitle {
@@ -127,6 +146,7 @@
             margin-bottom: 2rem;
             opacity: 0.9;
             animation: fadeInUp 1s ease-out 0.3s both;
+            color: var(--accent-hover); /* Using a lighter accent for subtitle */
         }
 
         .hero .description {
@@ -150,8 +170,8 @@
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
-            background: white;
-            color: #2563eb;
+            background: var(--accent-primary); /* Primary Accent - This is the main button */
+            color: var(--bg-dark); /* Dark text on button */
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
@@ -161,7 +181,8 @@
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: var(--accent-hover); /* Light Purple Hover */
+            box-shadow: 0 10px 30px var(--accent-primary)40; /* Accent shadow */
         }
 
         /* Section Styles */
@@ -179,7 +200,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: #2563eb;
+            color: var(--text-heading);
             position: relative;
         }
 
@@ -191,12 +212,12 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: #2563eb;
+            background: var(--accent-primary);
         }
 
         /* About Section */
         .about {
-            background: #f8fafc;
+            background: var(--bg-card); /* Card background for contrast */
         }
 
         .about-content {
@@ -214,20 +235,20 @@
             width: 250px;
             height: 250px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 4rem;
-            color: white;
+            color: var(--bg-dark); /* Dark text on accent */
             margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 0 8px var(--bg-dark), 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .about-text {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #555;
+            color: var(--text-light);
         }
 
         .about-text p {
@@ -243,39 +264,41 @@
         }
 
         .skill-card {
-            background: white;
+            background: var(--bg-dark); /* Dark background for skill cards */
             padding: 2rem;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--bg-card);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .skill-card:hover {
             transform: translateY(-10px);
+            border-color: var(--accent-primary);
         }
 
         .skill-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1rem;
             font-size: 1.5rem;
-            color: white;
+            color: var(--bg-dark); /* Dark text on accent */
         }
 
         .skill-card h3 {
             margin-bottom: 1rem;
-            color: #2563eb;
+            color: var(--accent-primary);
         }
 
         /* Projects Section */
         .projects {
-            background: #f8fafc;
+            background: var(--bg-dark);
         }
 
         .projects-grid {
@@ -286,10 +309,10 @@
         }
 
         .project-card {
-            background: white;
+            background: var(--bg-card); /* Card background */
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
         }
 
@@ -299,12 +322,23 @@
 
         .project-image {
             height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: white;
+            color: var(--bg-dark); /* Dark text on accent */
+        }
+        
+        /* Custom style for the second project card image (Task Management App) */
+        .project-two-image {
+            /* Use the uploaded image as background with a slight dark overlay */
+            background: 
+                linear-gradient(rgba(34, 34, 34, 0.1), rgba(34, 34, 34, 0.2)),
+                url('uploaded:Screenshot 2025-09-30 101530.jpg') center / cover no-repeat;
+            
+            /* Overwrite the default icon styling/content */
+            font-size: 0;
         }
 
         .project-content {
@@ -313,11 +347,11 @@
 
         .project-content h3 {
             margin-bottom: 1rem;
-            color: #2563eb;
+            color: var(--text-heading);
         }
 
         .project-content p {
-            color: #666;
+            color: var(--text-light);
             margin-bottom: 1.5rem;
         }
 
@@ -329,11 +363,12 @@
         }
 
         .tag {
-            background: #e0e7ff;
-            color: #2563eb;
+            background: var(--accent-secondary); /* Yellow Tag Background */
+            color: var(--bg-dark); /* Dark text on yellow */
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
+            font-weight: 600;
         }
 
         .project-links {
@@ -348,24 +383,37 @@
             font-weight: 500;
             transition: all 0.3s ease;
         }
-
+        
+        /* New style for disabled links */
+        .disabled-link {
+            opacity: 0.6; /* Slight dimming */
+            cursor: not-allowed;
+            /* We rely on removing the href attribute in HTML for non-functionality, 
+               but keep the visual hover intact */
+        }
+        
+        /* Updated style for primary-link (now an outline button) */
         .primary-link {
-            background: #2563eb;
-            color: white;
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
         }
 
         .primary-link:hover {
-            background: #1d4ed8;
+            transform: translateY(-3px); /* Retains visual hover movement */
+            background: var(--accent-primary);
+            color: var(--bg-card);
+            opacity: 1; /* Ensure opacity returns to full on hover */
         }
 
+        /* The secondary link is now styled the same as primary for consistency */
         .secondary-link {
-            border: 2px solid #2563eb;
-            color: #2563eb;
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
         }
 
         .secondary-link:hover {
-            background: #2563eb;
-            color: white;
+            background: var(--accent-primary);
+            color: var(--bg-card); /* Darker text on hover */
         }
 
         /* Contact Section */
@@ -378,7 +426,7 @@
 
         .contact-info h3 {
             margin-bottom: 2rem;
-            color: #2563eb;
+            color: var(--text-heading);
         }
 
         .contact-item {
@@ -390,17 +438,18 @@
         .contact-icon {
             width: 40px;
             height: 40px;
-            background: #2563eb;
+            background: var(--accent-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 1rem;
-            color: white;
+            color: var(--bg-dark); /* Dark text on accent */
+            font-size: 1.2rem;
         }
 
         .contact-form {
-            background: #f8fafc;
+            background: var(--bg-card); /* Card background */
             padding: 2rem;
             border-radius: 15px;
         }
@@ -413,14 +462,16 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-            color: #333;
+            color: var(--text-light);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 0.8rem;
-            border: 2px solid #e2e8f0;
+            border: 2px solid var(--bg-dark);
+            background: var(--bg-dark); /* Dark input background */
+            color: var(--text-heading); /* Light input text */
             border-radius: 8px;
             font-size: 1rem;
             transition: border-color 0.3s ease;
@@ -429,12 +480,12 @@
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #2563eb;
+            border-color: var(--accent-primary);
         }
 
         .submit-btn {
-            background: #2563eb;
-            color: white;
+            background: var(--accent-primary);
+            color: var(--bg-dark);
             padding: 1rem 2rem;
             border: none;
             border-radius: 8px;
@@ -446,13 +497,14 @@
         }
 
         .submit-btn:hover {
-            background: #1d4ed8;
+            background: var(--accent-hover);
+            color: var(--bg-dark);
         }
 
         /* Footer */
         .footer {
-            background: #1e293b;
-            color: white;
+            background: var(--bg-card);
+            color: var(--text-light);
             text-align: center;
             padding: 3rem 0;
         }
@@ -467,18 +519,20 @@
         .social-link {
             width: 50px;
             height: 50px;
-            background: #2563eb;
+            background: var(--accent-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            color: white;
+            color: var(--bg-dark); /* Dark text on accent */
+            font-size: 1.5rem;
             transition: transform 0.3s ease;
         }
 
         .social-link:hover {
             transform: translateY(-3px);
+            background: var(--accent-hover);
         }
 
         /* Responsive Design */
@@ -544,10 +598,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Hi, I'm Noah!</h1>
-            <p class="subtitle">Aspiring Game Dev & UI/UX Designer</p>
-            <p class="description">
-                I create fun interactive apps and webdesign, aswell as making simple and fun games.
-            </p>
+            <p class="subtitle">Aspiring Game Dev & UI/UX Designer. I create fun interactive apps and webdesign, aswell as making simple and fun games.</p>
             <a href="#projects" class="cta-button">View My Work</a>
         </div>
     </section>
@@ -611,34 +662,36 @@
                 <div class="project-card">
                     <div class="project-image">🛒</div>
                     <div class="project-content">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A full-featured e-commerce platform with user authentication, payment processing, and inventory management.</p>
+                        <h3>LifePlanner</h3>
+                        <p>An app that helps to reduce stress by building a routine that best fits you!</p>
                         <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
-                            <span class="tag">Stripe</span>
+                            <span class="tag">Figma</span>
+                            <span class="tag">UI Design</span>
+                            <span class="tag">Web Design</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link primary-link">Live Demo</a>
+                            <!-- UPDATED LINK: Behance Case Study -->
+                            <a href="https://www.behance.net/gallery/234792457/LifePlanner-Case-Study" target="_blank" class="project-link primary-link">Live Demo</a>
                             <a href="#" class="project-link secondary-link">GitHub</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image">📱</div>
+                    <!-- Added project-two-image class and removed the emoji for the image -->
+                    <div class="project-image project-two-image"></div>
                     <div class="project-content">
-                        <h3>Task Management App</h3>
-                        <p>A collaborative task management application with real-time updates and team collaboration features.</p>
+                        <h3>Stillwater Blues</h3>
+                        <p>Uncover mysteries in this dark mystery game.</p>
                         <div class="project-tags">
-                            <span class="tag">Vue.js</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">PWA</span>
+                            <span class="tag">Unreal Engine 5</span>
+                            <span class="tag">UI Design</span>
+                            <span class="tag">Story Writter</span>
+                            <span class="tag">Level Design</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link primary-link">Live Demo</a>
+                            <!-- This link was updated in the previous turn, keeping the new URL -->
+                            <a href="https://www.behance.net/gallery/234865183/Stillwater-Blues-Case-Study" target="_blank" class="project-link primary-link">Live Demo</a>
                             <a href="#" class="project-link secondary-link">GitHub</a>
                         </div>
                     </div>
@@ -647,17 +700,19 @@
                 <div class="project-card">
                     <div class="project-image">🌤️</div>
                     <div class="project-content">
-                        <h3>Weather Dashboard</h3>
-                        <p>A beautiful weather dashboard with detailed forecasts, interactive maps, and location-based alerts.</p>
+                        <h3>Field Stormer</h3>
+                        <p>Play as a sportsfan that runs the field and ruins the game because his favorite team did not make it to the elites.</p>
                         <div class="project-tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Chart.js</span>
-                            <span class="tag">API</span>
-                            <span class="tag">CSS3</span>
+                            <span class="tag">Unity</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">PixelArt</span>
+                            <span class="tag">Game Design</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link primary-link">Live Demo</a>
-                            <a href="#" class="project-link secondary-link">GitHub</a>
+                            <!-- Live Demo button is now disabled -->
+                            <a class="project-link primary-link disabled-link" title="Demo coming soon.">Live Demo</a>
+                            <!-- GitHub button is now disabled -->
+                            <a class="project-link secondary-link disabled-link" title="Code repository coming soon.">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -731,8 +786,8 @@
                 <a href="#" class="social-link">🐙</a>
                 <a href="#" class="social-link">🐦</a>
             </div>
-            <p>&copy; 2024 Noah Celius. All rights reserved.</p>
-            <p>Made with ❤️ and pure HTML/CSS</p>
+            <p>&copy; 2025 Noah Celius. All rights reserved.</p>
+            <p>Made with HTML/CSS</p>
         </div>
     </footer>
 
@@ -740,50 +795,44 @@
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                // Only prevent default for internal hash links, not external links
+                if (this.getAttribute('target') !== '_blank') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 }
             });
         });
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
+        // Simple console log for form submission (replace with a custom modal in a full app)
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // IMPORTANT: Never use window.alert in a real application, use a custom message box UI.
+            console.log('Form Submitted!');
+            // Replace with custom modal/toast message
+            console.log('Thank you for your message! I\'ll get back to you soon.');
+            this.reset();
+        });
+        
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
                 }
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
+        }, {
+            threshold: 0.1 // Trigger when 10% of the item is visible
         });
 
-        // Header background on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            this.reset();
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
         });
     </script>
 </body>
